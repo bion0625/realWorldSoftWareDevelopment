@@ -2,6 +2,7 @@ package com.iteratrlearning;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class BankStatementValidator {
 
@@ -9,7 +10,7 @@ public class BankStatementValidator {
     private final String date;
     private final String amount;
 
-    public BankStatementValidator(String description, String date, String amount) {
+    public BankStatementValidator(String date, String amount, String description) {
         this.description = description;
         this.date = date;
         this.amount = amount;
@@ -23,7 +24,7 @@ public class BankStatementValidator {
 
         final LocalDate parsedDate;
         try {
-            parsedDate = LocalDate.parse(this.date);
+            parsedDate = LocalDate.parse(this.date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             if (parsedDate.isAfter(LocalDate.now())) {
                 notification.addError("date cannot be in the future");
             }

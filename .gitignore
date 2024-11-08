@@ -1,11 +1,11 @@
 ### intellij
-/.idea/
-/out/
+**/.idea/
+**/out/
 
 ### maven
-/target/
+**/target/
 
 ### gradle
-/build/
-/.gradle/
-/gradle/
+**/build/
+**/.gradle/
+**/gradle/
