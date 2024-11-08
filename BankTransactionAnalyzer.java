@@ -29,6 +29,11 @@ public class BankTransactionAnalyzer {
 
         System.out.println("The total salary received is " + bankTransactionProcessor.calculateTotalForCategory("Salary"));
 
+//        final List<BankTransaction> transactions = bankTransactionProcessor.findTransactions(new BankTransactionInFebruaryAndExpensive());
+        final List<BankTransaction> transactions = bankTransactionProcessor.findTransactions(
+                bankTransaction -> bankTransaction.getDate().getMonth() == Month.FEBRUARY && bankTransaction.getAmount() >= 1_000);
+        System.out.println("transactions: " + transactions);
+
         LocalDate start = LocalDate.of(2017, 2, 1);
         LocalDate end = LocalDate.of(2017, 2, 3);
 

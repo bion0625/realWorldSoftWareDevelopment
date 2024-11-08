@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,6 +39,16 @@ public class BankTransactionProcessor {
             }
         }
         return total;
+    }
+
+    public List<BankTransaction> findTransactions(final BankTransactionFilter bankTransactionFilter) {
+        final List<BankTransaction> result = new ArrayList<>();
+        for (BankTransaction bankTransaction : bankTransactions) {
+            if (bankTransactionFilter.test(bankTransaction)) {
+                result.add(bankTransaction);
+            }
+        }
+        return result;
     }
 
     public double calculateMaxAmount(final LocalDate start, final LocalDate end) {
