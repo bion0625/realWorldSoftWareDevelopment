@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+group = 'com.iteratrlearning'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 9
+targetCompatibility = 9
+
+mainClassName = 'com.iteratrlearning.MainApplication'
+
+tasks.named('run') {
+    args = ['/data.txt'] // 프로그램 인수
+}
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version:'4.12'
+}

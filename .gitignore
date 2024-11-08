@@ -4,3 +4,8 @@
 
 ### maven
 /target/
+
+### gradle
+/build/
+/.gradle/
+/gradle/
