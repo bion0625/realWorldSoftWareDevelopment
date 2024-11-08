@@ -1,3 +1,5 @@
+package com.iteratrlearning;
+
 public class HtmlExporter implements Exporter {
     @Override
     public String export(SummaryStatistics summaryStatistics) {

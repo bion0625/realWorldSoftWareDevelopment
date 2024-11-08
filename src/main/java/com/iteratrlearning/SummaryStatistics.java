@@ -1,3 +1,5 @@
+package com.iteratrlearning;
+
 public class SummaryStatistics {
 
     private final double sum;

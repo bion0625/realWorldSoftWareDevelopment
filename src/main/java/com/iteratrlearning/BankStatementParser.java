@@ -1,3 +1,5 @@
+package com.iteratrlearning;
+
 import java.util.List;
 
 public interface BankStatementParser {

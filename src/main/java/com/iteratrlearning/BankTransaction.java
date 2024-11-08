@@ -1,3 +1,5 @@
+package com.iteratrlearning;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -26,7 +28,7 @@ public class BankTransaction {
 
     @Override
     public String toString() {
-        return "BankTransaction{" +
+        return "com.iteratrlearning.BankTransaction{" +
                 "date=" + date +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +

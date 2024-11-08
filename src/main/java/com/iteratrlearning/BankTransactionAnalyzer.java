@@ -1,3 +1,5 @@
+package com.iteratrlearning;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,7 +31,7 @@ public class BankTransactionAnalyzer {
 
         System.out.println("The total salary received is " + bankTransactionProcessor.calculateTotalForCategory("Salary"));
 
-//        final List<BankTransaction> transactions = bankTransactionProcessor.findTransactions(new BankTransactionInFebruaryAndExpensive());
+//        final List<com.iteratrlearning.BankTransaction> transactions = bankTransactionProcessor.findTransactions(new com.iteratrlearning.BankTransactionInFebruaryAndExpensive());
         final List<BankTransaction> transactions = bankTransactionProcessor.findTransactions(
                 bankTransaction -> bankTransaction.getDate().getMonth() == Month.FEBRUARY && bankTransaction.getAmount() >= 1_000);
         System.out.println("transactions: " + transactions);

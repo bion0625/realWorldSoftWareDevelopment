@@ -1,3 +1,5 @@
+package com.iteratrlearning;
+
 public class BankTransactionParser {
     public BankTransaction parseFromCSV(final String line) {
         // ...
