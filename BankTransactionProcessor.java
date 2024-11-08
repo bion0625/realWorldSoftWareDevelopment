@@ -13,20 +13,23 @@ public class BankTransactionProcessor {
         this.bankTransactions = bankTransactions;
     }
 
+    public double summarizeTransactions(final BankTransactionSummarizer bankTransactionSummarizer) {
+        double result = 0;
+        for (final BankTransaction bankTransaction : bankTransactions) {
+            result = bankTransactionSummarizer.summarizer(result, bankTransaction);
+        }
+        return result;
+    }
+
+    public double calculateTotalInMonth(final Month month) {
+        return summarizeTransactions((acc, bankTransaction) ->
+                bankTransaction.getDate().getMonth() == month ? acc + bankTransaction.getAmount() : acc);
+    }
+
     public double calculateTotalAmount() {
         double total = 0;
         for (final BankTransaction bankTransaction : bankTransactions) {
             total += bankTransaction.getAmount();
-        }
-        return total;
-    }
-
-    public double calculateTotalInMonth(final Month month) {
-        double total = 0;
-        for (final BankTransaction bankTransaction : bankTransactions) {
-            if (bankTransaction.getDate().getMonth() == month) {
-                total += bankTransaction.getAmount();
-            }
         }
         return total;
     }
@@ -49,6 +52,10 @@ public class BankTransactionProcessor {
             }
         }
         return result;
+    }
+
+    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
+        return findTransactions(bankTransaction -> bankTransaction.getAmount() >= amount);
     }
 
     public double calculateMaxAmount(final LocalDate start, final LocalDate end) {
