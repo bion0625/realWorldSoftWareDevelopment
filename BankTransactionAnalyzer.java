@@ -8,20 +8,18 @@ import java.util.List;
 public class BankTransactionAnalyzer {
     private static final String RESOURCES = "src/main/resources";
 
-    public static void main(String[] args) throws IOException {
-        final BankStatementCSVParser bankStatementCSVParser = new BankStatementCSVParser();
-
-        final String fileName = args[0];
+    public void analyze(final String fileName, final BankStatementParser bankStatementParser) throws IOException {
         final Path path = Paths.get(RESOURCES + fileName);
-        List<String> lines = Files.readAllLines(path);
+        final List<String> lines = Files.readAllLines(path);
 
-        List<BankTransaction> bankTransactions = bankStatementCSVParser.parseLinesFromCSV(lines);
-        BankTransactionProcessor bankTransactionProcessor = new BankTransactionProcessor(bankTransactions);
+        final List<BankTransaction> bankTransactions = bankStatementParser.parseLinesFrom(lines);
+
+        final BankTransactionProcessor bankTransactionProcessor = new BankTransactionProcessor(bankTransactions);
 
         collectSummary(bankTransactionProcessor);
     }
 
-    private static void collectSummary(final BankTransactionProcessor bankTransactionProcessor) {
+    private void collectSummary(final BankTransactionProcessor bankTransactionProcessor) {
         System.out.println("The total for all transactions is " + bankTransactionProcessor.calculateTotalAmount());
 
         System.out.println("The total for transactions in January " + bankTransactionProcessor.calculateTotalInMonth(Month.JANUARY));
